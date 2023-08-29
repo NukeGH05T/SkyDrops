@@ -5,6 +5,8 @@ import me.nukeghost.skydrops.commands.TabComplete;
 import me.nukeghost.skydrops.data.LootSet;
 import me.nukeghost.skydrops.handlers.ClusterSpawnHandler;
 import me.nukeghost.skydrops.tasks.LootUpdateTask;
+import me.nukeghost.skydrops.utils.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -25,6 +27,7 @@ public final class SkyDrops extends JavaPlugin {
     public void onEnable() {
         plugin = this;
 
+        Metrics metrics = new Metrics(this, 19679);
         prefix = ChatColor.translateAlternateColorCodes('&', SkyDrops.plugin.getConfig().getString("prefix"));
 
         getConfig().options().copyDefaults(true);
@@ -40,6 +43,8 @@ public final class SkyDrops extends JavaPlugin {
 
         loadLootSets();
         initializeLootSets();
+
+        Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "[SkyDrops] This plugin is licensed to " + ChatColor.GREEN + "%%__USERNAME__%%");
     }
 
     private void loadLootSets() {
