@@ -1,0 +1,89 @@
+prefix: '&9&lSky&b&lDrops'
+
+active-loot-sets: #Only loot-sets that are included in here will be active
+  - swordsman
+  - trickster
+
+discord-webhook: #Discord webhook setup
+  enabled: false
+  url: ''
+
+#--------------- Loot-set Template----------------#
+swordsman: # A loot-set with the id 'swordsman'
+  title: '&cSwordsman Loot'
+  notice: '&7Dropped &c&lSwordsman Loot&7 at &e{DROP_LOC}&7.' # Players with 'skydrops.notice' permission will get notice whenever this loot-set drops.
+  carve: true # Should the sphere carve into  the location or should it spawn the chest only if it's in air
+  first-spawn-delay: 20 #Unused
+  repeat-spawn-delay: 3600 #In Seconds. Refresh delay for this loot-set
+  outer-layer-material: CRYING_OBSIDIAN # This material is used to surround the loot chest with. Must match material from -> https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+  active-spawn-regions: # Regions in which the loot can drop in. Can have many spawn regions. Format: <x1>/<y1>/<z1>~<x2>/<y2>/<z2>@<world_name>
+    - 3/120/-55~15/125/-40@world
+    #- 15/120/80~200/60/-55@world
+  loots: # Loots included in the loot-set
+    1: # Loot id, this can be anything. Numbers help keep track of and can't have multiple loots with same loot id
+      material: NETHERITE_SWORD # Vanilla material, must match from -> https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+      amount: 1 # Amount of this item
+      enchantments: # Must match enchantments from -> https://hub.spigotmc.org/javadocs/spigot/org/bukkit/enchantments/Enchantment.html
+        - FIRE_ASPECT@2 # Enchantment and their level. Supports unsafe enchantments. Format: <enchantment>@<level>
+        - LOOTING@1
+        - SHARPNESS@5
+    2:
+      material: FLINT_AND_STEEL
+      amount: 1
+      enchantments:
+        - UNBREAKING@3
+#--------------- Loot-set Template----------------#
+
+trickster:
+  title: '&9Trickster Loot'
+  notice: '&7Dropped &9&lTrickster Loot&7 at &e{DROP_LOC}&7.'
+  carve: false
+  first-spawn-delay: 20
+  repeat-spawn-delay: 1300
+  outer-layer-material: YELLOW_WOOL
+  active-spawn-regions:
+    - 3/115/-55~15/120/-40@world
+  loots:
+    1:
+      material: DIAMOND_SWORD
+      amount: 1
+      enchantments:
+        - FIRE_ASPECT@1
+        - LOOTING@1
+        - SHARPNESS@5
+    2:
+      material: FLINT_AND_STEEL
+      amount: 1
+      enchantments:
+        - UNBREAKING@1
+    3:
+      material: CREEPER_SPAWN_EGG
+      amount: 1
+      enchantments: []
+
+kamikaze:
+  title: '&4Kamikaze Loot'
+  notice: '&7Dropped &4&lKamikaze Loot&7 at &e{DROP_LOC}&7.'
+  carve: false
+  first-spawn-delay: 800
+  repeat-spawn-delay: 500
+  outer-layer-material: CRYING_OBSIDIAN
+  active-spawn-regions:
+    - 3/60/-55~15/60/-40@world
+  loots:
+    1:
+      material: DIAMOND_SWORD
+      amount: 1
+      enchantments:
+        - FIRE_ASPECT@1
+        - LOOTING@1
+        - SHARPNESS@5
+    2:
+      material: FLINT_AND_STEEL
+      amount: 1
+      enchantments:
+        - UNBREAKING@1
+    3:
+      material: CREEPER_SPAWN_EGG
+      amount: 1
+      enchantments: []

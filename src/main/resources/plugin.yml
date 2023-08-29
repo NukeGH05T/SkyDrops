@@ -1,0 +1,16 @@
+name: SkyDrops
+version: '${project.version}'
+main: me.nukeghost.skydrops.SkyDrops
+api-version: '1.14'
+prefix: SkyDrops
+authors: [NukeGH05T]
+description: Drops loot chests from the sky
+commands:
+  skydrops:
+    aliases: [sd, skyd, sdrops]
+    description: Main command for the plugin
+permissions:
+  sd.notice:
+    default: true
+  sd.manage:
+    default: op
