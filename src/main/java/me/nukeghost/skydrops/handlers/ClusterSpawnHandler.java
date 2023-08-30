@@ -54,9 +54,9 @@ public class ClusterSpawnHandler {
         String[] c1 = corners[0].split("/");
         String[] c2 = corners[1].split("/");
 
-        int[] spawnCoords = {getRandomNumber(Integer.parseInt(c1[0]), Integer.parseInt(c2[0])),
-                            getRandomNumber(Integer.parseInt(c1[1]), Integer.parseInt(c2[1])),
-                            getRandomNumber(Integer.parseInt(c1[2]), Integer.parseInt(c2[2]))};
+        int[] spawnCoords = {getRandomNumber(Math.min(Integer.parseInt(c1[0]), Integer.parseInt(c2[0])), Math.max(Integer.parseInt(c1[0]), Integer.parseInt(c2[0]))),
+                            getRandomNumber(Math.min(Integer.parseInt(c1[1]), Integer.parseInt(c2[1])), Math.max(Integer.parseInt(c1[1]), Integer.parseInt(c2[1]))),
+                            getRandomNumber(Math.min(Integer.parseInt(c1[2]), Integer.parseInt(c2[2])), Math.max(Integer.parseInt(c1[2]), Integer.parseInt(c2[2])))};
 
         System.out.println("Spawn Coords: " + Arrays.toString(spawnCoords));
 
