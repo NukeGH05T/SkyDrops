@@ -3,6 +3,7 @@ package me.nukeghost.skydrops.commands;
 import me.nukeghost.skydrops.commands.subcommands.AddCommand;
 import me.nukeghost.skydrops.commands.subcommands.HelpCommand;
 import me.nukeghost.skydrops.commands.subcommands.ReloadCommand;
+import me.nukeghost.skydrops.commands.subcommands.SpawnCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,6 +21,7 @@ public class CommandManager implements CommandExecutor {
         subcommands.add(new HelpCommand());
         //subcommands.add(new AddCommand());
         subcommands.add(new ReloadCommand());
+        subcommands.add(new SpawnCommand());
     }
 
     @Override

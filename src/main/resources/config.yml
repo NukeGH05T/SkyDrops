@@ -7,11 +7,15 @@ active-loot-sets: #Only loot-sets that are included in here will be active
 discord-webhook: #Discord webhook setup
   enabled: false
   url: ''
+  username: 'SkyDropsPlus'
+  avatar-url: 'https://media.discordapp.net/attachments/1123977501480329247/1146170519041880065/Sky_Drops.jpg'
+  color: '#10FBBB' #Hex code including the hashtag(#)
+  format: 'Spawned **{LOOT_ID}** at `{DROP_X}, {DROP_Y}, {DROP_Z}` in `{DROP_WORLD}`. Next drop in `{NEXT_DROP}`'
 
 #--------------- Loot-set Template----------------#
 swordsman: # A loot-set with the id 'swordsman'
   title: '&cSwordsman Loot'
-  notice: '&7Dropped &c&lSwordsman Loot&7 at &e{DROP_LOC}&7.' # Players with 'skydrops.notice' permission will get notice whenever this loot-set drops.
+  notice: '&7Dropped &c&lSwordsman Loot&7 at &e{DROP_X}&7, &e{DROP_Y}&7, &e{DROP_Z}&7.' # Players with 'skydrops.notice' permission will get notice whenever this loot-set drops.
   carve: true # Should the sphere carve into  the location or should it spawn the chest only if it's in air
   first-spawn-delay: 20 #Unused
   repeat-spawn-delay: 3600 #In Seconds. Refresh delay for this loot-set

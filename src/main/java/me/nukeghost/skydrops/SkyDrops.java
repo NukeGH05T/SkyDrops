@@ -22,6 +22,10 @@ public final class SkyDrops extends JavaPlugin {
 
     public static String webhookURL;
     public static boolean isWebhookOn = false;
+    public static String username;
+    public static String avatarURL;
+    public static String color;
+    public static String format;
 
     @Override
     public void onEnable() {
@@ -36,6 +40,10 @@ public final class SkyDrops extends JavaPlugin {
         if (getConfig().getBoolean("discord-webhook.enabled")) {
             webhookURL = getConfig().getString("discord-webhook.url");
             isWebhookOn = getConfig().getBoolean("discord-webhook.enabled");
+            username = getConfig().getString("discord-webhook.username");
+            avatarURL = getConfig().getString("discord-webhook.avatar-url");
+            color = getConfig().getString("discord-webhook.color");
+            format = getConfig().getString("discord-webhook.format");
         }
 
         getCommand("skydrops").setExecutor(new CommandManager());
@@ -59,7 +67,6 @@ public final class SkyDrops extends JavaPlugin {
 
     private void initializeLootSets() {
         for (LootSet lootSet : lootSets) {
-            System.out.println(lootSet.getId() + " " + lootSet.getTitle());
             ClusterSpawnHandler.spawnCluster(lootSet, lootSet.getOuterLayer(), lootSet.isCarve());
         }
 

@@ -1,6 +1,7 @@
 package me.nukeghost.skydrops.data;
 
 import me.nukeghost.skydrops.handlers.ClusterSpawnHandler;
+import me.nukeghost.skydrops.utils.TimeUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -60,10 +61,12 @@ public class LootSet {
             for (String enchantmentString : materialEnchants) {
                 String[] parts = enchantmentString.split("@");
                 try {
+                    System.out.println(Enchantment.DURABILITY.getKey());
+                    System.out.println(NamespacedKey.minecraft(parts[0].toLowerCase()));
                     lootItemStack.addUnsafeEnchantment(Enchantment.getByKey(NamespacedKey.minecraft(parts[0].toLowerCase())), Integer.parseInt(parts[1]));
                 } catch (Exception ex) {
                     Bukkit.getLogger().severe("An error occured while applying level " + materialAmount + " " + enchantmentString + " for " + id);
-                    Bukkit.getLogger().severe((Supplier<String>) ex);
+                    Bukkit.getLogger().severe(ex.toString());
                 }
             }
 
@@ -77,6 +80,11 @@ public class LootSet {
         cooldownStart = System.currentTimeMillis();
         System.out.println(this.getId() + " " + this.getTitle());
         ClusterSpawnHandler.spawnCluster(this, outerLayer, carve);
+    }
+
+    public String remainingTime() { //Works
+        long remainingTime = (cooldownStart + (cooldownTime)) - System.currentTimeMillis();
+        return TimeUtils.formatEpochTime(remainingTime);
     }
 
     public String getTitle() {

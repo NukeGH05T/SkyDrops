@@ -3,6 +3,7 @@ package me.nukeghost.skydrops.handlers;
 import com.itsradiix.DiscordWebHookMessage;
 import com.itsradiix.embed.Embed;
 import me.nukeghost.skydrops.data.LootSet;
+import me.nukeghost.skydrops.utils.PlaceholderUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -13,8 +14,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
 
-import static me.nukeghost.skydrops.SkyDrops.isWebhookOn;
-import static me.nukeghost.skydrops.SkyDrops.webhookURL;
+import static me.nukeghost.skydrops.SkyDrops.*;
 import static me.nukeghost.skydrops.handlers.GenerationHandler.getRandomNumber;
 import static me.nukeghost.skydrops.utils.PlaceholderUtils.parsePlaceholders;
 import static me.nukeghost.skydrops.webhook.DiscordWebhook.sendDiscordWebhook;
@@ -36,12 +36,12 @@ public class ClusterSpawnHandler {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player.hasPermission("sd.notice")) {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', parsePlaceholders(lootSet.getNotice(),
-                        spawnLocation.getBlockX() + "/" + spawnLocation.getBlockY() + "/" + spawnLocation.getBlockZ())));
+                        spawnLocation, lootSet)));
             }
         }
 
         if (isWebhookOn) {
-            sendDiscordWebhook(lootSet.getId(), "Spawn location: `" + spawnLocation.getBlockX() + "/" + spawnLocation.getBlockY() + "/" + spawnLocation.getBlockZ() + "` in `" + spawnLocation.getWorld().getName() + "`");
+            sendDiscordWebhook(lootSet.getId(), PlaceholderUtils.parsePlaceholders(format, spawnLocation, lootSet));
         }
 
     }
